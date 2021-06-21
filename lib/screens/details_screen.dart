@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_yoga_course_app/widgets/bottom_navbar.dart';
 import 'package:flutter_yoga_course_app/widgets/search_bar.dart';
 import '/constants.dart';
 
@@ -24,57 +26,119 @@ class DetailsScreen extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: size.height * .05),
-                  Text(
-                    'Meditaion',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 4),
-                    child: Text(
-                      '3-10 Min Course',
-                      style: TextStyle(fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  SizedBox(
-                    width: size.width * .6,
-                    child: Text(
-                      'Live happier and healthier by learning the fundmentals of meditation and mindfulness',
-                      style: TextStyle(height: 1.4),
-                    ),
-                  ),
-                  SizedBox(
-                    width: size.width * .5,
-                    child: SearchBar(),
-                  ),
-                  Wrap(
-                    spacing: 16,
-                    runSpacing: 16,
-                    children: [
-                      SessionCard(
-                        sessionNumber: 1,
-                        isDone: true,
-                        press: () {},
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: size.height * .05),
+                    Text(
+                      'Meditaion',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
                       ),
-                      SessionCard(sessionNumber: 2, press: () {}),
-                      SessionCard(sessionNumber: 3, press: () {}),
-                      SessionCard(sessionNumber: 4, press: () {}),
-                      SessionCard(sessionNumber: 5, press: () {}),
-                      SessionCard(sessionNumber: 6, press: () {}),
-                    ],
-                  ),
-                ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 4),
+                      child: Text(
+                        '3-10 Min Course',
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * .6,
+                      child: Text(
+                        'Live happier and healthier by learning the fundmentals of meditation and mindfulness',
+                        style: TextStyle(height: 1.4),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * .5,
+                      child: SearchBar(),
+                    ),
+                    Wrap(
+                      spacing: 16,
+                      runSpacing: 16,
+                      children: [
+                        SessionCard(
+                          sessionNumber: 1,
+                          isDone: true,
+                          press: () {},
+                        ),
+                        SessionCard(sessionNumber: 2, press: () {}),
+                        SessionCard(sessionNumber: 3, press: () {}),
+                        SessionCard(sessionNumber: 4, press: () {}),
+                        SessionCard(sessionNumber: 5, press: () {}),
+                        SessionCard(sessionNumber: 6, press: () {}),
+                      ],
+                    ),
+                    SizedBox(height: 32),
+                    Text(
+                      'Meditation',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 12),
+                            blurRadius: 16,
+                            spreadRadius: -4,
+                            color: shadowColor,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                              'assets/icons/Meditation_women_small.svg'),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Basic 2',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color.fromARGB(180, 0, 0, 0),
+                                  ),
+                                ),
+                                Text(
+                                  'Start your deepen you practice',
+                                  style: TextStyle(
+                                    color: Color.fromARGB(180, 0, 0, 0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: SvgPicture.asset('assets/icons/Lock.svg'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                  ],
+                ),
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavbar(),
     );
   }
 }
@@ -100,7 +164,7 @@ class SessionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              offset: Offset(0, 16),
+              offset: Offset(0, 12),
               blurRadius: 16,
               spreadRadius: -4,
               color: shadowColor,
